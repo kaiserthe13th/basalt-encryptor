@@ -1,4 +1,3 @@
-from typing import List
 from encrypter import enc
 import chardet
 from sys import argv, stderr; ewrite = stderr.write
@@ -20,11 +19,14 @@ if len(ARGS) == 5:
 	elif ARGS[1] in ('e2','enc2','encrypt2'):
 		prm_key = int(ARGS[3])
 		cae_key = int(ARGS[4])
-		res = enc.encrypt(ARGS[2], prm_key, cae_key)
+		res = enc.encrypt2(ARGS[2], prm_key, cae_key)
 		ewrite('primary key: ' + str(prm_key) + '\n')
 		ewrite('caesar key: ' + str(cae_key) + '\n')
+		ewrite('private primary key: ' + str(res['prm']) + '\n')
+		ewrite('private caesar key: ' + str(res['cae']) + '\n')
+		ewrite('tb: ' + str(res['tb0']) + '\n')
 		ewrite('result:\n')
-		print(res)
+		print(res['result'])
 	elif ARGS[1] in ('d','dec','decrypt'):
 		prm_key = int(ARGS[3])
 		cae_key = int(ARGS[4])
